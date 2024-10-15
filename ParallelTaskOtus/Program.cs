@@ -63,7 +63,7 @@ namespace ParallelTaskOtus
             Console.WriteLine($"{totalSum}, thread время выполнения: {stopwatch.ElapsedMilliseconds} ms");
             long parralel = stopwatch.ElapsedMilliseconds;
             File.WriteAllText("Otus.txt", $"{sum}, последовательного время выполнения: {stopwatch.ElapsedMilliseconds}");
-            File.WriteAllText("Otus.txt", $"{totalSum} thread время выполнения: {series} ms\n{result}, LINQ время выполнения: {linq} ms\n{sum}, последовательного время выполнения: {parralel} ms");
+            File.WriteAllText("Otus.txt", $"{osInfo}\n{processor}\n{memory}\n{totalSum} thread время выполнения: {series} ms\n{result}, LINQ время выполнения: {linq} ms\n{sum}, последовательного время выполнения: {parralel} ms");
         }
     }
 }
