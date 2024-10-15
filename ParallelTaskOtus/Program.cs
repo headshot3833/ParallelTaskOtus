@@ -30,16 +30,18 @@ namespace ParallelTaskOtus
             stopwatch.Stop();
             string WIN32_Class = "Win32_Processor";
             Console.WriteLine($"{sum}, последовательного время выполнения: {stopwatch.ElapsedMilliseconds}");
+            long series = stopwatch.ElapsedMilliseconds;
             stopwatch.Restart();
-
+            
             long result = Parallel.LinqSumParallel(numbers.ArrayNumbers);
 
             stopwatch.Stop();
 
             Console.WriteLine($"{result}, LINQ время выполнения: {stopwatch.ElapsedMilliseconds} ms");
+            File.WriteAllText("Otus.txt", $"{result}, LINQ время выполнения: {stopwatch.ElapsedMilliseconds} ms");
+            long linq = stopwatch.ElapsedMilliseconds;
 
             Numbers sumResult1 = new Numbers();
-
             Numbers sumResult2 = new Numbers();
 
             int mid = numbers.ArrayNumbers.Length / 2;
@@ -59,6 +61,9 @@ namespace ParallelTaskOtus
 
             long totalSum = sumResult1.Sum + sumResult2.Sum;
             Console.WriteLine($"{totalSum}, thread время выполнения: {stopwatch.ElapsedMilliseconds} ms");
+            long parralel = stopwatch.ElapsedMilliseconds;
+            File.WriteAllText("Otus.txt", $"{sum}, последовательного время выполнения: {stopwatch.ElapsedMilliseconds}");
+            File.WriteAllText("Otus.txt", $"{totalSum} thread время выполнения: {series} ms\n{result}, LINQ время выполнения: {linq} ms\n{sum}, последовательного время выполнения: {parralel} ms");
         }
     }
 }
