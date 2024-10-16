@@ -28,7 +28,7 @@ namespace ParallelTaskOtus
                 stopwatch.Stop();
                 string WIN32_Class = "Win32_Processor";
                 Console.WriteLine($"{sum}, последовательного время выполнения: {stopwatch.ElapsedMilliseconds}");
-                //
+
                 //параллельное суммирование с использованием LINQ
                 long series = stopwatch.ElapsedMilliseconds;
                 stopwatch.Restart();
@@ -36,7 +36,6 @@ namespace ParallelTaskOtus
                 stopwatch.Stop();
 
                 Console.WriteLine($"{result}, LINQ время выполнения: {stopwatch.ElapsedMilliseconds} ms");
-                File.WriteAllText("Otus.txt", $"{result}, LINQ время выполнения: {stopwatch.ElapsedMilliseconds} ms");
                 long linq = stopwatch.ElapsedMilliseconds;
 
                 Numbers sumResult1 = new Numbers();
@@ -60,8 +59,8 @@ namespace ParallelTaskOtus
                 long totalSum = sumResult1.Sum + sumResult2.Sum;
                 Console.WriteLine($"{totalSum}, thread время выполнения: {stopwatch.ElapsedMilliseconds} ms");
                 long parralel = stopwatch.ElapsedMilliseconds;
-                File.WriteAllText("Otus.txt", $"{sum}, последовательного время выполнения: {stopwatch.ElapsedMilliseconds}");
-                File.WriteAllText("Otus.txt", $"{osInfo}\n{processor}\n{memory}\n{totalSum} thread время выполнения: {series} ms\n{result}, LINQ время выполнения: {linq} ms\n{sum}, последовательного время выполнения: {parralel} ms");
+
+                File.AppendAllText("Otus.txt", $"\n{osInfo}\n{processor}\n{memory}\n{totalSum} thread время выполнения: {series} ms\n{result}, LINQ время выполнения: {linq} ms\n{sum}, последовательного время выполнения: {parralel} ms");
         
             }
         }
