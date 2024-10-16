@@ -8,9 +8,9 @@ namespace ParallelTaskOtus
 {
     public static class Parallel
     {
-        public static long LinqSumParallel(int[] array)
+        public static long LinqSumParallel(int[] number)
         {
-            return array.AsParallel().Sum(x => (long)x); 
+            return number.AsParallel().WithDegreeOfParallelism(2).Sum(x => (long)x); 
         }
 
     }
